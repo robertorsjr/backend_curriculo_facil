@@ -22,14 +22,15 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const dotenv = __importStar(require("dotenv"));
 const express_1 = __importDefault(require("express"));
-const routes_1 = __importDefault(require("./app/routes"));
+const config_1 = require("./config/config");
+const routes_1 = __importDefault(require("./routes"));
 const bodyParser = __importStar(require("body-parser"));
 const app = (0, express_1.default)();
-dotenv.config();
+const aio = 'asd';
+console.log(aio);
 app.use(bodyParser.json());
 app.use(routes_1.default);
-app.listen(process.env.PORT, () => {
+app.listen(config_1.PORT, () => {
     console.log("Node server started running");
 });
