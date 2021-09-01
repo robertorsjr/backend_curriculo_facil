@@ -1,1 +1,7 @@
+
+// modulos
 node_modules/
+
+
+// variavel de ambiente
+.env
