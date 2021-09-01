@@ -1,9 +1,10 @@
-import { BasicCurriculum } from "../types/curriculum";
-import { db } from "../config/db";
-import { OkPacket, RowDataPacket } from "mysql2";
+import { OkPacket } from 'mysql2';
+import { BasicCurriculum } from '../types/curriculum';
+import { db } from '../config/db';
 
 export const create = (curriculum: BasicCurriculum, callback: Function) => {
-  const queryString = "INSERT INTO curriculo (nome, data_nascimento, cep, logradouro, bairro, cidade, uf, complemento, email, telefone, experiencia) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
+  const queryString =
+    'INSERT INTO curriculo (nome, data_nascimento, cep, logradouro, bairro, cidade, uf, complemento, email, telefone, experiencia) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
 
   db.query(
     queryString,
@@ -18,13 +19,15 @@ export const create = (curriculum: BasicCurriculum, callback: Function) => {
       curriculum.complemento,
       curriculum.email,
       curriculum.telefone,
-      curriculum.experiencia
+      curriculum.experiencia,
     ],
     (err, result) => {
-      if (err) { callback(err) };
+      if (err) {
+        callback(err);
+      }
 
-      const insertId = (<OkPacket>result).insertId;
+      const { insertId } = <OkPacket>result;
       callback(null, insertId);
-    }
+    },
   );
 };

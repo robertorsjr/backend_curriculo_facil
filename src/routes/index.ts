@@ -1,14 +1,14 @@
-import { response, Request, Router } from 'express'
-import { curriculumRouter } from './curriculumRouter'
+import { Response, Request, Router } from 'express';
+import { curriculumRouter } from './curriculumRouter';
 
-const routes = Router()
+const routes = Router();
 
-routes.get('/', (request, response) => {
+routes.get('/', (request: Request, response: Response) => {
   return response.json({
-    'message': 'Server OK!'
-  })
-})
+    message: 'Server OK!',
+  });
+});
 
-routes.use('/curriculum', curriculumRouter)
+routes.use('/curriculum', curriculumRouter);
 
-export default routes
+export default routes;
